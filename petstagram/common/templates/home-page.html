@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="col-9">
+
+
+            <!-- Start Searchbar Form -->
+            <form class="searchbar" method="post">
+                {{ search_form }}
+                {% csrf_token %}
+{#                <input type="text" placeholder="Search by pet name...">#}
+                <button>
+                    <img src="{% static 'images/search.png' %}" height="18" alt="img2">
+                </button>
+            </form>
+            <!-- End Searchbar Form -->
+
+            <!-- Start Pet Photos Post Section -->
+            <!-- Start First Pet Photo Post -->
+            {% for photo in photos %}
+                {% include 'partials/photo_item.html' with photo=photo %}
+            {% endfor %}
+            <!-- End First Pet Photo Post -->
+
+
+
+
+        </div>
+    </div>
+{% endblock %}
