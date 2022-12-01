@@ -185,7 +185,11 @@
         </div>
 
         <!-- Start Add Comments Form -->
+        {% if request.user.is_authenticated %}
         <form method="post" action="{% url 'add comment' photo_id=photo.pk %}">
+            {% else %}
+        <form method="post" action="{% url 'login' %}">
+            {% endif %}
             {{ comment_form }}
             {% csrf_token %}
             <!-- Post Comments Button -->

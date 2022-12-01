@@ -2,14 +2,14 @@ version: '3.4'
 
 services:
   web:
-    build: ./petstagram
+    build: ./
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./petstagram/:/usr/src/app/
     ports:
       - 8000:8000
     env_file:
-      - /envs/.env.prod
+      - ./envs/.env.prod
     depends_on:
       - postgres
   postgres:

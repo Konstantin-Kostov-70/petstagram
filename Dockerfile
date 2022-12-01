@@ -9,9 +9,9 @@ ENV PYTHONUNBUFFERED 1
 ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 
-#ENV STATICFILES_HOME=/tmp/staticfiles
-#
-#RUN mkdir -p $STATICFILES_HOME
+ENV STATICFILES_HOME=/tmp/staticfiles
+
+RUN mkdir -p $STATICFILES_HOME
 
 # WORKDIR is as `cd` + `mkdir`
 WORKDIR $APP_HOME
@@ -22,4 +22,4 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY .. .
+COPY . .
