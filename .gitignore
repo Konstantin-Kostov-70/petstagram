@@ -1,0 +1,3 @@
+# created by virtualenv automatically
+postgres-data/*
+!postgres-data/.gitkeep
