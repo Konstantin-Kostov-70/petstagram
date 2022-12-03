@@ -16,7 +16,8 @@ SECRET_KEY = os.environ.get('SECREY_KEY')
 DEBUG = bool(os.environ.get('DEBUG'))
 
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'), ]
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 
