@@ -23,6 +23,12 @@ class UserLoginForm(auth_forms.AuthenticationForm):
 
 
 class UserEditForm(forms.ModelForm):
+
+    user_photo = forms.ImageField(
+        widget=forms.ClearableFileInput(
+            attrs={'class': 'label-input',
+                   'placeholder': 'Chose file'}),
+    )
     class Meta:
         model = UserModel
         fields = ('first_name', 'last_name', 'username', 'user_photo', 'email', 'gender')
@@ -35,22 +41,34 @@ class UserEditForm(forms.ModelForm):
 
         widgets = {
             'first_name': forms.TextInput(
-                attrs={'placeholder': 'First Name'}
+                attrs={
+                    'placeholder': 'First Name',
+                    'class': 'label-input'
+                }
 
             ),
 
             'last_name': forms.TextInput(
-                attrs={'placeholder': 'Last Name'}
+                attrs={
+                    'placeholder': 'Last Name',
+                    'class': 'label-input',
+                }
 
             ),
 
             'username': forms.TextInput(
-                attrs={'placeholder': 'Username'}
+                attrs={
+                    'placeholder': 'Username',
+                    'class': 'label-input',
+                }
 
             ),
 
-            'email': forms.TextInput(
-                attrs={'placeholder': 'Email'}
+            'email': forms.EmailInput(
+                attrs={
+                    'placeholder': 'Email',
+                    'class': 'label-input',
+                }
 
             ),
 
