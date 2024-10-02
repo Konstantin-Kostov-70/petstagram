@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load custom_filter %}
+{% block content %}
+    <!-- Start Edit Profile Section -->
+{#    <div class="edit-delete">#}
+{#        <h2>Edit Profile</h2>#}
+        <!-- Start Edit Profile From -->
+{#        <form method="post" action="{% url 'profile-edit' pk=object.pk %}" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            {% for field in form %}#}
+{##}
+{#                <div class="label-input">#}
+{#                    <label>{{ field.label }}:</label>#}
+{#                    {% if not  field.label == 'Gender' %}#}
+{#                        {{ field }}#}
+{##}
+{#                    {% else %}#}
+{#                        <div class="list-choice">#}
+{#                            <div class="list-choice-title">Gender</div>#}
+{#                            <div class="list-choice-objects">#}
+
+{#                                       <label>#}
+{#                                {% for type, value in form.fields.gender.choices %}#}
+{#                                        <input type="radio" value="{{ value }}" name="gender"#}
+{#                                                {% if form.gender.value == value %}#}
+{#                                               checked#}
+{#                                                {% endif %}/>#}
+{#                                        <span>{{ value }}</span>#}
+{#                                     {% endfor %}#}
+{#                                    </label>#}
+
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                    {% endif %}#}
+{##}
+{#                </div>#}
+{#                <br>#}
+{#            {% endfor %}#}
+{##}
+{#            <!-- Edit Profile Button -->#}
+{#            <button class="edit-btn" type="submit">Edit</button>#}
+{#        </form>#}
+{#        <!-- End Edit Profile Form -->#}
+{##}
+{#    </div>#}
+    <!-- End Edit Profile Section -->
+    <div class="edit-delete">
+        <h2>Edit Profile</h2>
+        <!-- Start Edit Profile From -->
+        <form method="post" action="{% url 'profile-edit' pk=object.pk %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="label-input">
+                <label for="first name">First name: </label>
+                {{ form.first_name }}
+            </div>
+            <br>
+            <div class="label-input">
+                <label for="last name">Last name: </label>
+                {{ form.last_name }}
+            </div>
+            <br>
+            <div class="label-input">
+                <label for="username">Username: </label>
+                {{ form.username }}
+            </div>
+            <br>
+            <div class="label-input">
+                <label for="email">Email: </label>
+               {{ form.email }}
+            </div>
+            <br>
+            <div class="label-input">
+                <label for="image">Image: </label>
+                {{ form.user_photo }}
+            </div>
+            <br>
+
+            <div class="label-input">
+                <label for="image">Gender: </label>
+                <div class="list-choice">
+                    <div class="list-choice-title">Gender</div>
+                    <div class="list-choice-objects">
+{#                        <label>#}
+
+{#                            <input type="radio" name="gender"/> <span>Male</span>#}
+{#                        </label>#}
+{#                        <label>#}
+{#                            <input type="radio" name="gender"/> <span>Female</span>#}
+{#                        </label>#}
+{#                        <label>#}
+{#                            <input type="radio" name="gender"/> <span>Do not show</span>#}
+{#                        </label>#}
+                                   <label>
+                                {% for type, value in form.fields.gender.choices %}
+                                        <input type="radio" value="{{ value }}" name="gender"
+                                                {% if form.gender.value == value %}
+                                               checked
+                                                {% endif %}/>
+                                        <span>{{ value }}</span>
+                                     {% endfor %}
+                                    </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Button -->
+            <button class="edit-btn" type="submit">Edit</button>
+        </form>
+        <!-- End Edit Profile Form -->
+
+    </div>
+{% endblock %}
